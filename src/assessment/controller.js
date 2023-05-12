@@ -64,8 +64,8 @@ const createAssessment = (req, res) => {
     secure: false,
     requireTLS: true,
     auth: {
-      user: "app@brasterapica.com.br",
-      pass: "Bov05092",
+      user: process.env.SEND_EMAIL,
+      pass: process.env.SEND_EMAIL_PASSWORD,
     },
     tls:  { ciphers: 'SSLv3' },
     service: "Outlook365",
@@ -113,15 +113,14 @@ const createAssessment = (req, res) => {
             <p>No entanto, notamos que sua avaliação ainda não foi validada. Para garantir a integridade da sua avaliação, é importante que você valide sua avaliação.</p>
             <p>Para fazer isso, por favor, clique no botão de validação abaixo. </p>
             <p>Obrigado novamente por sua colaboração e aguardamos sua validação.</p>
-            <a><Button style="cursor: pointer; background: #195BA2; border: none; border-radius: 16px; padding: 16px"><a style="text-decoration: none; color: #fff" href="http://localhost:3000/validation/${results.rows[0].id_assessment}">Clique aqui para realizar a validação</Button></a>
+            <a><Button style="cursor: pointer; background: #195BA2; border: none; border-radius: 16px; padding: 16px"><a style="text-decoration: none; color: #fff" href="http://avaliacaodesempenhoapi.azurewebsites.net/validation/${results.rows[0].id_assessment}">Clique aqui para realizar a validação</Button></a>
             <p>Atenciosamente, <br/>Equipe Braste</p>
             </div>
   </div>`
       );
 
       await sendEmail(
-        transport,
-        "joao.soares@brasterapica.com.br",
+        transport, emailManager,
         `
         <div>
         <div style="background: #195BA2; padding: 10px 16px">
@@ -146,7 +145,7 @@ const createAssessment = (req, res) => {
         `
       );
 
-      await sendEmail(
+      /* await sendEmail(
         transport,
         "joaovitor.soaresti@gmail.com",
         `
@@ -171,7 +170,7 @@ const createAssessment = (req, res) => {
               </div>
         </div>
         `
-      ); 
+      );  */
       res.status(200).json(results.rows[0].id_assessment);
     }
   );

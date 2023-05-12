@@ -14,8 +14,8 @@ const transport = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-      user: 'app@brasterapica.com.br',
-      pass: 'Bov05092'
+    user: process.env.SEND_EMAIL,
+    pass: process.env.SEND_EMAIL_PASSWORD
   }
 });
 
