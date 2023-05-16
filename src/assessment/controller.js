@@ -113,7 +113,7 @@ const createAssessment = (req, res) => {
             <p>No entanto, notamos que sua avaliação ainda não foi validada. Para garantir a integridade da sua avaliação, é importante que você valide sua avaliação.</p>
             <p>Para fazer isso, por favor, clique no botão de validação abaixo. </p>
             <p>Obrigado novamente por sua colaboração e aguardamos sua validação.</p>
-            <a><Button style="cursor: pointer; background: #195BA2; border: none; border-radius: 16px; padding: 16px"><a style="text-decoration: none; color: #fff" href="http://avaliacaodesempenhoapi.azurewebsites.net/validation/${results.rows[0].id_assessment}">Clique aqui para realizar a validação</Button></a>
+            <a><Button style="cursor: pointer; background: #195BA2; border: none; border-radius: 16px; padding: 16px"><a style="text-decoration: none; color: #fff" href="https://avaliacaodesempenhocli.azurewebsites.net/validation/${results.rows[0].id_assessment}">Clique aqui para realizar a validação</Button></a>
             <p>Atenciosamente, <br/>Equipe Braste</p>
             </div>
   </div>`
