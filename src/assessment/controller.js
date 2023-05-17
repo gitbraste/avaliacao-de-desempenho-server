@@ -145,9 +145,9 @@ const createAssessment = (req, res) => {
         `
       );
 
-      /* await sendEmail(
+      await sendEmail(
         transport,
-        "joaovitor.soaresti@gmail.com",
+        "monique.pinheiro@brasterapica.com.br",
         `
         <div>
         <div style="background: #195BA2; padding: 10px 16px">
@@ -170,7 +170,7 @@ const createAssessment = (req, res) => {
               </div>
         </div>
         `
-      );  */
+      );
       res.status(200).json(results.rows[0].id_assessment);
     }
   );
