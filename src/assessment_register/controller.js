@@ -41,8 +41,8 @@ const createAssessmentRegister = (req, res) => {
     secure: false,
     requireTLS: true,
     auth: {
-      user: "joaovitor.soaresti@outlook.com",
-      pass: "Joao@2023",
+      user: process.env.SEND_EMAIL,
+      pass: process.env.SEND_EMAIL_PASSWORD,
     },
     tls:  { ciphers: 'SSLv3' },
     service: "Outlook365",
@@ -145,7 +145,7 @@ const createAssessmentRegister = (req, res) => {
 const sendEmail = async (transport, email, body) => {
   await transport
     .sendMail({
-      from: "joaovitor.soaresti@outlook.com",
+      from: process.env.SEND_EMAIL,
       to: email,
       subject: "Validação de Avaliação de Desempenho",
       html: body
