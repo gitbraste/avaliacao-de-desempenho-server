@@ -16,8 +16,8 @@ const transport = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: "joaovitor.soaresti@outlook.com",
-    pass: "Joao@2023",
+    user: process.env.SEND_EMAIL,
+    pass: process.env.SEND_EMAIL_PASSWORD,
   },
 });
 
@@ -54,7 +54,7 @@ app.post('/api/email', (req, res) => {
   const { email, code } = req.body;
 
   transport.sendMail({
-    from: 'joaovitor.soaresti@outlook.com',
+    from: process.env.SEND_EMAIL,
     to: email,
     subject: 'Seu código de acesso ao GP Performance',
     html: `
